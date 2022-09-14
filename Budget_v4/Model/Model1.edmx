@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Budgetv2DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Goals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SavingValue" Type="money" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="AproximatedGoalAchived" Type="date" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IncomeValue" Type="money" Nullable="false" />
+          <Property Name="IsMonthly" Type="bit" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Outcomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="OutcomeValue" Type="money" Nullable="false" />
+          <Property Name="IsMonthly" Type="bit" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payday">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="date" Nullable="false" />
+          <Property Name="Value" Type="money" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Savings2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Goals__UserId__4222D4EF">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Goals" Type="Self.Goals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incomes__UserId__3A81B327">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Outcomes__UserId__3E52440B">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payday__UserId__45F365D3">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Payday" Type="Self.Payday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payday">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Budgetv2DatabaseModelStoreContainer">
+          <EntitySet Name="Goals" EntityType="Self.Goals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incomes" EntityType="Self.Incomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Outcomes" EntityType="Self.Outcomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payday" EntityType="Self.Payday" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Savings2" EntityType="Self.Savings2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Goals__UserId__4222D4EF" Association="Self.FK__Goals__UserId__4222D4EF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Goals" EntitySet="Goals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incomes__UserId__3A81B327" Association="Self.FK__Incomes__UserId__3A81B327">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Outcomes__UserId__3E52440B" Association="Self.FK__Outcomes__UserId__3E52440B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payday__UserId__45F365D3" Association="Self.FK__Payday__UserId__45F365D3">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Payday" EntitySet="Payday" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Budgetv2DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Goals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SavingValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AproximatedGoalAchived" Type="DateTime" Precision="0" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Goals__UserId__4222D4EF" FromRole="Goals" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Incomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IncomeValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="IsMonthly" Type="Boolean" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Incomes__UserId__3A81B327" FromRole="Incomes" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Outcomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OutcomeValue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="IsMonthly" Type="Boolean" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Outcomes__UserId__3E52440B" FromRole="Outcomes" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Payday">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Payday__UserId__45F365D3" FromRole="Payday" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Savings2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Goals" Relationship="Self.FK__Goals__UserId__4222D4EF" FromRole="Users" ToRole="Goals" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK__Incomes__UserId__3A81B327" FromRole="Users" ToRole="Incomes" />
+          <NavigationProperty Name="Outcomes" Relationship="Self.FK__Outcomes__UserId__3E52440B" FromRole="Users" ToRole="Outcomes" />
+          <NavigationProperty Name="Payday" Relationship="Self.FK__Payday__UserId__45F365D3" FromRole="Users" ToRole="Payday" />
+        </EntityType>
+        <Association Name="FK__Goals__UserId__4222D4EF">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Goals" Type="Self.Goals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incomes__UserId__3A81B327">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Outcomes__UserId__3E52440B">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Outcomes" Type="Self.Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Outcomes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payday__UserId__45F365D3">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Payday" Type="Self.Payday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payday">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Budgetv2DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Goals" EntityType="Self.Goals" />
+          <EntitySet Name="Incomes" EntityType="Self.Incomes" />
+          <EntitySet Name="Outcomes" EntityType="Self.Outcomes" />
+          <EntitySet Name="Payday" EntityType="Self.Payday" />
+          <EntitySet Name="Savings2" EntityType="Self.Savings2" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK__Goals__UserId__4222D4EF" Association="Self.FK__Goals__UserId__4222D4EF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Goals" EntitySet="Goals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incomes__UserId__3A81B327" Association="Self.FK__Incomes__UserId__3A81B327">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Outcomes__UserId__3E52440B" Association="Self.FK__Outcomes__UserId__3E52440B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payday__UserId__45F365D3" Association="Self.FK__Payday__UserId__45F365D3">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Payday" EntitySet="Payday" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Budgetv2DatabaseModelStoreContainer" CdmEntityContainer="Budgetv2DatabaseEntities">
+          <EntitySetMapping Name="Goals">
+            <EntityTypeMapping TypeName="Budgetv2DatabaseModel.Goals">
+              <MappingFragment StoreEntitySet="Goals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SavingValue" ColumnName="SavingValue" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AproximatedGoalAchived" ColumnName="AproximatedGoalAchived" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incomes">
+            <EntityTypeMapping TypeName="Budgetv2DatabaseModel.Incomes">
+              <MappingFragment StoreEntitySet="Incomes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IncomeValue" ColumnName="IncomeValue" />
+                <ScalarProperty Name="IsMonthly" ColumnName="IsMonthly" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Outcomes">
+            <EntityTypeMapping TypeName="Budgetv2DatabaseModel.Outcomes">
+              <MappingFragment StoreEntitySet="Outcomes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OutcomeValue" ColumnName="OutcomeValue" />
+                <ScalarProperty Name="IsMonthly" ColumnName="IsMonthly" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payday">
+            <EntityTypeMapping TypeName="Budgetv2DatabaseModel.Payday">
+              <MappingFragment StoreEntitySet="Payday">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Savings2">
+            <EntityTypeMapping TypeName="Budgetv2DatabaseModel.Savings2">
+              <MappingFragment StoreEntitySet="Savings2">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Budgetv2DatabaseModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="647735ee6f6b440a95a4cdd0e8bd5f5c" Name="Diagram1">
+        <EntityTypeShape EntityType="Budgetv2DatabaseModel.Goals" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Budgetv2DatabaseModel.Incomes" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Budgetv2DatabaseModel.Outcomes" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Budgetv2DatabaseModel.Payday" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Budgetv2DatabaseModel.Savings2" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Budgetv2DatabaseModel.Users" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="Budgetv2DatabaseModel.FK__Goals__UserId__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="Budgetv2DatabaseModel.FK__Incomes__UserId__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="Budgetv2DatabaseModel.FK__Outcomes__UserId__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Budgetv2DatabaseModel.FK__Payday__UserId__45F365D3" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,108 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Budget_v4.Views"
+        xmlns:Model="clr-namespace:Budget_v4.Model" x:Class="Budget_v4.Views.Budget"
+        mc:Ignorable="d"
+        Title="Budget" Height="450" Width="400" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <Model:Incomes></Model:Incomes>
+
+    </Window.DataContext>
+    <Window.Resources>
+        <CollectionViewSource x:Key="savingsViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:Savings}}"/>
+        <CollectionViewSource x:Key="paydayViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:Payday}}"/>
+        <CollectionViewSource x:Key="incomesViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:Incomes}}"/>
+        <CollectionViewSource x:Key="incomesViewSource1" d:DesignSource="{d:DesignInstance {x:Type Model:Incomes}}"/>
+        <CollectionViewSource x:Key="outcomesViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:Outcomes}}"/>
+        <CollectionViewSource x:Key="paydayViewSource1" d:DesignSource="{d:DesignInstance {x:Type Model:Payday}}"/>
+        <CollectionViewSource x:Key="paydayViewSource2" d:DesignSource="{d:DesignInstance {x:Type Model:Payday}}"/>
+        <CollectionViewSource x:Key="savingsViewSource1" d:DesignSource="{d:DesignInstance {x:Type Model:Savings}}"/>
+        <CollectionViewSource x:Key="savingsViewSource2" d:DesignSource="{d:DesignInstance {x:Type Model:Savings}}"/>
+    </Window.Resources>
+    <Grid Margin="0,0,-122,-114"  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="191*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid x:Name="grid2" DataContext="{StaticResource paydayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="222,306,0,0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="dayLabel" Grid.Column="1" Content="{Binding Day, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="grid3" DataContext="{StaticResource incomesViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,66,0,0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Content="Income Value:" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label x:Name="incomeValueLabel" Grid.Column="1" Content="{Binding IncomeValue, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="grid4" DataContext="{StaticResource outcomesViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,124,0,0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Content="Outcome Value:" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label x:Name="outcomeValueLabel" Grid.Column="1" Content="{Binding OutcomeValue, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="grid5" DataContext="{StaticResource paydayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,186,0,0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="dayLabel1" Grid.Column="1" Content="{Binding Day, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Grid x:Name="grid6" DataContext="{StaticResource paydayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="5,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Content="Day:" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label x:Name="dayLabel2" Grid.Column="1" Content="{Binding Day, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+
+        
+        <Grid x:Name="grid1" DataContext="{StaticResource savingsViewSource2}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="15,240,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Content="Value:" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label x:Name="valueLabel" Grid.Column="1" Content="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Button Content="Edit" HorizontalAlignment="Left" Height="29" Margin="200,69,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click" Grid.Column="1"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Height="29" Margin="200,121,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_1" Grid.Column="1"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Height="29" Margin="200,186,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_2" Grid.Column="1"/>
+        
+        <Button Content="Refresh" HorizontalAlignment="Left" Height="29" Margin="200,310,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_4" Grid.Column="1"/>
+        <Label Content="Daily:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="35" Margin="13,339,0,0" VerticalAlignment="Top" Width="55"/>
+
+    </Grid>
+</Window>

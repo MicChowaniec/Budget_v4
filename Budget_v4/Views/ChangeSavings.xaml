@@ -1,0 +1,35 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Budget_v4.Views"
+        xmlns:Model="clr-namespace:Budget_v4.Model" x:Class="Budget_v4.Views.ChangeSavings"
+        mc:Ignorable="d"
+        Title="ChangeSavings" Height="176" Width="289" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="savingsViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:Savings}}"/>
+    </Window.Resources>
+    <Grid Margin="10,0,10,-6" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="154*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="grid1" DataContext="{StaticResource savingsViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,46,0,0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="47.253"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="1" Content="Value:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="valueTextBox" Grid.Column="2" HorizontalAlignment="Center" Height="NaN" Text="{Binding Value, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+       
+
+    </Grid>
+</Window>
